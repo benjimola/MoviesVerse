@@ -1,0 +1,93 @@
+
+
+<div class="ms_fea_album_slider">
+  <div class="ms_heading">
+    <h1>Latest Trailers</h1>
+    <span class="veiw_all"><MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined">
+    <MudButton>@_buttonText</MudButton>
+    <MudMenu Icon="@Icons.Material.Filled.ArrowDropDown">
+        <MudMenuItem OnClick="() => SetButtonText(0)">Streaming</MudMenuItem>
+        <MudMenuItem OnClick="() => SetButtonText(1)">On TV</MudMenuItem>
+        <MudMenuItem OnClick="() => SetButtonText(2)">For Rent</MudMenuItem>
+        <MudMenuItem OnClick="() => SetButtonText(3)">In Theaters</MudMenuItem>
+    </MudMenu>
+</MudButtonGroup></span>
+  </div>
+
+  <MudPaper Class="d-flex flex-nowrap mb-8 gap-4 overflow-auto" Elevation="0">
+   @if(_trailers is object){  
+       foreach (var item in _trailers)
+          {
+           <div class="col-lg-4">
+                    <div class="ms_genres_box">
+                       <MudImage ObjectFit="ObjectFit.Cover" ObjectPosition="ObjectPosition.Center" Height="200" Width="400" Src="@($"https://www.themoviedb.org{item.ImgUrl}")" Alt="Öxarárfoss, Iceland"  Elevation="25" Class="rounded-lg"/>
+                        <div class="ms_main_overlay">
+                            <div class="ms_box_overlay"></div>
+                            <div class="ms_play_icon">
+                                <img src="images/svg/play.svg" @onclick="@((e) => OpenDialog(item))" alt="">
+                            </div>
+                            <div class="ovrly_text_div">
+                                <span class="ovrly_text1"><a href="#">@item.TrailerTitle</a></span>
+                            </div>
+                        </div>
+                        <div class="ms_box_overlay_on">
+                            <div class="ovrly_text_div">
+                                <span class="ovrly_text1"><a href="#">@item.Title</a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          }
+   }
+   
+  </MudPaper>
+
+</div>
+
+
+
+
+
+
+<style>
+  .flex-none {
+    flex: none !important;
+    margin-top: 15px;
+    margin-bottom: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .mud-paper {
+    background-color: rgb(26 26 39);
+    border-radius: 15px;
+  }
+
+  .mud-button-group-root .mud-button-root.mud-icon-button .mud-icon-root {
+    font-size: 24.516rem;
+}
+
+.mud-typography-body1 {
+    font-size: 12px !important;
+    font-family: var(--mud-typography-body1-family);
+    font-weight: var(--mud-typography-body1-weight);
+    line-height: var(--mud-typography-body1-lineheight);
+    letter-spacing: var(--mud-typography-body1-letterspacing);
+    text-transform: var(--mud-typography-body1-text-transform);
+}
+
+.mud-button {
+    padding: 6px 16px;
+    font-family: var(--mud-typography-button-family);
+    font-size: 12px;
+    font-weight: var(--mud-typography-button-weight);
+    line-height: var(--mud-typography-button-lineheight);
+    letter-spacing: var(--mud-typography-button-letterspacing);
+    text-transform: var(--mud-typography-button-text-transform);
+    min-width: 64px;
+    box-sizing: border-box;
+    transition: background-color 250ms cubic-bezier(.4,0,.2,1) 0ms,box-shadow 250ms cubic-bezier(.4,0,.2,1) 0ms,border 250ms cubic-bezier(.4,0,.2,1) 0ms;
+    border-radius: var(--mud-default-borderradius);
+    color: var(--mud-palette-text-primary);
+}
+</style>

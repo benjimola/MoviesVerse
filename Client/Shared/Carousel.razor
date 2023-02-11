@@ -1,0 +1,292 @@
+@using TMDbLib.Objects.Movies;
+
+
+<MudCarousel Class="mud-width-full" style="height: 530px;" ShowArrows="@arrows" ShowBullets="@bullets"
+    EnableSwipeGesture="@enableSwipeGesture" AutoCycle="@autocycle" TData="object">
+    @if (_slider is object)
+    {
+        foreach (var item in _slider)
+        {
+            <MudCarouselItem Transition="transition">
+                <div class="ms-banner"
+            style="background: url('@(imageUrl + item.BackdropPath)');background-repeat:no-repeat; 
+        background-size: cover;
+          height: 80vh;">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12">
+
+                                <div class="ms_banner_img" style=" display: none">
+
+                                    <img src="https://www.themoviedb.org/t/p/original/iLtWzaK2WKxb1YDk3E9VysMRYNA.jpg"
+                                style="max-height: 530px;" alt="" class="img-fluid">
+                                    <div class="g_top">
+                                        <div class="g_small_left"></div>
+                                        <div class="g_small_right"></div>
+                                    </div>
+                                    <div class="g_right"></div>
+                                    <div class="g_bottom"></div>
+                                    <div class="g_left"></div>
+
+                                </div>
+
+
+                                <div class="ms_banner_text">
+                                    <MudChip Size="Size.Small" Label="true" Variant="Variant.Text" Color="Color.Primary">Action</MudChip>
+                                            <MudChip Size="Size.Small" Label="true" Variant="Variant.Text" Color="Color.Secondary">Thriller</MudChip>
+                                    <MudChip Size="Size.Small" Label="true" Variant="Variant.Text" Color="Color.Info">Comedy</MudChip>
+                                    <h1 class="ms_c_title">@item.Title</h1>
+                                    <p>
+                                    </p>
+                                    <div class="ms_banner_btn">
+                                        
+                                        <a href="#" class="ms_btn">Watch Now</a>
+                                        <a href="#" class="ms_btn">Add To Verse</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="b-top"></div>
+                    <div class="b-bottom"></div>
+                    <div class="b-left">
+                        <div class="b-left-top"></div>
+                        <div class="b-left-bottom"></div>
+                    </div>
+                    <div class="b-right">
+                        <div class="b-right-top"></div>
+                        <div class="b-right-bottom"></div>
+                    </div>
+                </div>
+            </MudCarouselItem>
+        }
+    }
+</MudCarousel>
+
+
+
+<style>
+
+
+    .ms_banner_text {
+        position: relative;
+        z-index: 2;
+    }
+
+    .ms_banner_text>h1 {
+        font-family: Dosis;
+        font-size: 5em;
+        z-index: 4;
+    }
+
+    .g_top {
+        height: 13%;
+        width: 100%;
+        background-image: linear-gradient(to bottom,
+                rgba(26, 26, 39, 1) 18%,
+                rgba(26, 26, 39, .7) 40%,
+                rgba(26, 26, 35, .4) 70%,
+                rgba(26, 26, 35, 0) 100%);
+        z-index: 1;
+        top: 0;
+        position: absolute;
+    }
+
+    .g_bottom {
+        bottom: 0;
+        height: 10%;
+        width: 100%;
+        background-image: linear-gradient(to top,
+                rgba(26, 26, 39, 1) 18%,
+                rgba(26, 26, 39, .7) 40%,
+                rgba(26, 26, 39, .4) 70%,
+                rgba(26, 26, 39, 0) 100%);
+        z-index: 1;
+        position: absolute;
+
+    }
+
+    .g_right {
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 50%;
+        background-image: linear-gradient(to left,
+                rgba(26, 26, 39, 1) 25%,
+                rgba(26, 26, 39, .7) 40%,
+                rgba(26, 26, 39, .4) 70%,
+                rgba(26, 26, 39, 0) 100%);
+
+
+        z-index: 1;
+        position: absolute;
+
+
+    }
+
+    .g_left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 70%;
+        z-index: 1;
+        background-image: linear-gradient(to right,
+                rgba(26, 26, 39, 1) 18%,
+                rgba(26, 26, 39, .7) 40%,
+                rgba(26, 26, 39, .4) 70%,
+                rgba(26, 26, 39, 0) 100%);
+    }
+
+    .g_small_left {
+        top: 0;
+        float: left;
+        background-image: linear-gradient(to bottom right,
+                rgba(26, 26, 39, 1) 18%,
+                rgba(26, 26, 39, .4) 40%,
+                rgba(26, 26, 39, 0) 70%,
+                rgba(26, 26, 39, 0) 100%);
+        width: 50%;
+        height: 100%;
+        z-index: 8000000;
+    }
+
+    .g_small_right {
+        top: 0;
+        background-image: linear-gradient(to bottom left,
+                rgba(26, 26, 39, 1) 18%,
+                rgba(26, 26, 39, .4) 40%,
+                rgba(26, 26, 39, 0) 70%,
+                rgba(26, 26, 39, 0) 100%);
+        float: left;
+        width: 50%;
+        height: 100%;
+        z-index: 8000000;
+    }
+
+    .ms_c_title {
+        background: linear-gradient(11deg, #594ae2 0%, #f69 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .ms-banner {
+        position: relative;
+    }
+
+    .b-top {
+        height: 50%;
+        width: 100%;
+        position: absolute;
+        background-image: linear-gradient(to bottom,
+                rgba(26, 26, 39, 1)1%,
+                rgba(26, 26, 39, 0.7)25%,
+                rgba(26, 26, 35, 0.4)45%,
+                rgba(26, 26, 35, 0)94%);
+        top: 0;
+        z-index: 0;
+    }
+
+    .b-bottom {
+        height: 50%;
+        width: 100%;
+        position: absolute;
+        background-image: linear-gradient(to top,
+                rgba(26, 26, 39, 1)5%,
+                rgba(26, 26, 39, 0.7)25%,
+                rgba(26, 26, 39, 0.4)45%,
+                rgba(26, 26, 39, 0)94%);
+        bottom: 0;
+        z-index: 0;
+    }
+
+    .b-left {
+        height: 100%;
+        width: 40%;
+        position: absolute;
+
+        background-image: linear-gradient(to right,
+                rgba(26, 26, 39, 1)5%,
+                rgba(26, 26, 39, 0.7)35%,
+                rgba(26, 26, 35, 0.4)50%,
+                rgba(26, 26, 35, 0)98%);
+        left: 0;
+        top: 0;
+        z-index: 1;
+    }
+
+    .b-right {
+        height: 100%;
+        width: 40%;
+        position: absolute;
+        background-image: linear-gradient(to left,
+                rgba(26, 26, 39, 1)10%,
+                rgba(26, 26, 39, 0.7)35%,
+                rgba(26, 26, 35, 0.5)64%,
+                rgba(26, 26, 35, 0)87%);
+        top: 0;
+        right: 0;
+        z-index: 0;
+    }
+
+    .right-top {
+
+        top: 0;
+        background-color: green;
+        height: 50%;
+        width: 100%;
+
+    }
+
+    .right-bottom {
+        background: blue;
+        bottom: 0;
+        height: 50%;
+        width: 100%;
+        z-index: 81;
+    }
+
+    .b-left-top {
+        position: absolute;
+        top: 0;
+        background: linear-gradient(125deg, rgba(26, 26, 39, 1) 22%, rgba(26, 26, 37, 0.7) 25%, rgba(26, 26, 35, 0.4) 34%, rgba(26, 26, 33, 0) 50%);
+        height: 50%;
+        width: 100%;
+
+
+    }
+
+    .b-right-top {
+        position: absolute;
+        top: 0;
+        background: linear-gradient(230deg, rgba(26, 26, 39, 1) 22%, rgba(26, 26, 37, 0.7) 25%, rgba(26, 26, 35, 0.4) 34%, rgba(26, 26, 33, 0) 50%);
+        height: 50%;
+        width: 100%;
+
+
+    }
+
+    .b-left-bottom {
+        position: absolute;
+        bottom: 0;
+        background: linear-gradient(35deg, rgba(26, 26, 39, 1) 10%,
+                rgba(26, 26, 37, 0.7) 30%,
+                rgba(26, 26, 35, 0.4) 42%,
+                rgba(26, 26, 33, 0) 63%);
+        height: 50%;
+        width: 100%;
+
+    }
+
+    .b-right-bottom {
+        position: absolute;
+        bottom: 0;
+        background: linear-gradient(323deg, rgba(26, 26, 39, 1) 10%,
+                rgba(26, 26, 37, 0.7) 30%,
+                rgba(26, 26, 35, 0.4) 42%,
+                rgba(26, 26, 33, 0) 63%);
+        height: 50%;
+        width: 100%;
+
+    }
+</style>

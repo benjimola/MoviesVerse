@@ -1,0 +1,26 @@
+<MudDialog>
+    <DialogContent>
+        <MudContainer  style="max-height:405px; width: 50vw">
+        <div class="embed-border">
+            <div class="embed-responsive">
+                <iframe width="720" height="405" src="@($"https://www.youtube.com/embed/{context}?autoplay=1")" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+       </MudContainer>
+    </DialogContent>
+</MudDialog>
+
+<style>
+    .mud-dialog .mud-dialog-content {
+    position: relative;
+    flex: 1 1 auto;
+    padding:0px 0px;
+    -webkit-overflow-scrolling: touch;
+    border-top-left-radius: var(--mud-default-borderradius);
+    border-top-right-radius: var(--mud-default-borderradius);
+}
+
+.mud-dialog{
+    background-color: black;
+}
+</style>

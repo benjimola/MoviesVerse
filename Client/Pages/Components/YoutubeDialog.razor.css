@@ -1,0 +1,49 @@
+/* extra div which gets the border  */
+.embed-border {
+  border-radius: 15px;
+  box-sizing: border-box; /* prevents extra width from being added */
+}
+
+
+
+/* aspect ratio styles */
+.embed-responsive {
+  position: relative;
+  overflow: hidden;
+  height: 0;
+  padding-bottom: 56.25%;
+}
+.embed-responsive iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* You can use media queries to change appearance. 
+In this example, the border around the video is 
+1px wide and blue by default (see line #3 above).
+
+The  media query below is changing the color and 
+width of the border around the video for devices 
+with screens larger than 576px wide. */
+
+@media only screen and (min-width: 576px) {
+  .embed-border {
+    width: 100%;
+  height: 100%;
+  }
+}
+
+/* You can change the same parameter multiple times
+for different screens, or change many things at once.
+The example below has another change for the border, 
+as well as making the .wrapper a bit larger. */
+@media only screen and (min-width: 768px) {
+  .embed-border {
+    width: 100%;
+  height: 100%;
+  }
+}

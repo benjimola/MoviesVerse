@@ -1,0 +1,36 @@
+﻿@page "/"
+@inject IJSRuntime jsruntime
+@implements IAsyncDisposable
+
+
+<PageTitle>Dashboard</PageTitle>
+<Carousel/>
+<RecentlyPlayed/>
+<Weekly/>
+<FeaturedMovies/>
+<NewRelease/>
+<Trailer/>
+<Genre/>
+<TrailerModal/>
+
+@code{
+        private Lazy<IJSObjectReference> customJs = new();
+        protected override async Task OnAfterRenderAsync(bool firstRender)
+        {
+           if(firstRender){
+            customJs = new(await jsruntime.InvokeAsync<IJSObjectReference>("import", "./js/custom.js"));
+           }
+        }
+
+        public async ValueTask DisposeAsync()
+        {
+            if(customJs.IsValueCreated)
+            {
+                await customJs.Value.DisposeAsync();
+            }
+        }
+
+}
+
+
+
